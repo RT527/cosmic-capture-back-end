@@ -16,12 +16,12 @@ router.get('/image', async (req, res) => {
     })
 
     const data = response.data
-    const randomIndex = Math.floor(Math.random() * data.length)
-    const randomImage = data[randomIndex]
+    const mostRecentImage = data[0]
+    const imageUrl = `https://epic.gsfc.nasa.gov/archive/natural/${mostRecentImage.date.slice(0, 10).replace(/-/g, '/')}/png/${mostRecentImage.image}.png`
 
     const epicData = {
-      url: `https://api.nasa.gov/EPIC/archive/natural/${randomImage.image}.jpg`,
-      caption: randomImage.caption,
+      url: imageUrl,
+      caption: mostRecentImage.caption,
     }
 
     res.json(epicData)
