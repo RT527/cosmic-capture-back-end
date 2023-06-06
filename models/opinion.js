@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
   class Opinion extends Model {
     static associate(models) {
       Opinion.belongsTo(models.Epic, { foreignKey: 'epicId' });
-      Opinion.belongsTo(models.Profile, { foreignKey: 'voterId' });
       Opinion.belongsTo(models.Profile, { foreignKey: 'profileId' });
     }
   }
@@ -30,15 +29,6 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       profileId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'Profile',
-          key: 'id',
-        },
-      },
-      voterId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         onDelete: 'CASCADE',
