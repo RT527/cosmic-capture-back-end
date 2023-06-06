@@ -1,10 +1,11 @@
-'use strict'
-const { Model } = require('sequelize')
+'use strict';
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Epic extends Model {
     static associate(models) {
-      Epic.hasMany(models.Vote, { foreignKey: 'epicId' })
+      Epic.hasMany(models.Vote, { foreignKey: 'epicId' });
+      Epic.hasMany(models.Opinion, { foreignKey: 'epicId' });
     }
   }
 
@@ -27,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'Epic',
     }
-  )
+  );
 
-  return Epic
-}
+  return Epic;
+};
