@@ -1,12 +1,12 @@
 const express = require('express')
 const axios = require('axios')
 require('dotenv').config()
-const epicsCtrl = require('../controllers/epics');
+// const epicsCtrl = require('../controllers/epics');
 
 const router = express.Router()
 
 /*---------- Public Routes ----------*/
-router.post('/', epicsCtrl.createEpic);
+// router.post('/', epicsCtrl.createEpic);
 
 /*---------- Protected Routes ----------*/
 
