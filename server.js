@@ -17,13 +17,14 @@ app.use(formData.parse())
 // Import routes
 const profilesRouter = require('./routes/profiles.js')
 const authRouter = require('./routes/auth.js')
-const epicRouter = require('./routes/epic')
+const epicsRouter = require('./routes/epic');
+const opinionsRouter = require('./routes/opinions.js')
 
 // Mount imported routes
 app.use('/api/profiles', profilesRouter)
 app.use('/api/auth', authRouter)
-app.use('/api/epic', epicRouter)
-
+app.use('/api/epics', epicsRouter)
+app.use('/api/opinions', opinionsRouter)
 // Handle 404 errors
 app.use(function (req, res, next) {
   res.status(404).json({ err: 'Not found' })

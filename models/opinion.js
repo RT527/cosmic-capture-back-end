@@ -4,7 +4,6 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Opinion extends Model {
     static associate(models) {
-      Opinion.belongsTo(models.Epic, { foreignKey: 'epicId' });
       Opinion.belongsTo(models.Profile, { foreignKey: 'profileId' });
     }
   }
@@ -19,15 +18,6 @@ module.exports = (sequelize, DataTypes) => {
           max: 5,
         },
       },
-      epicId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'Epic',
-          key: 'id',
-        },
-      },
       profileId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -36,6 +26,15 @@ module.exports = (sequelize, DataTypes) => {
           model: 'Profile',
           key: 'id',
         },
+      },
+      opinionId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Profiles',
+          key: 'id',
+        }
       },
       comment: {
         type: DataTypes.STRING,
@@ -50,5 +49,3 @@ module.exports = (sequelize, DataTypes) => {
 
   return Opinion;
 };
-
-

@@ -12,15 +12,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      epicId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'Epics',
-          key: 'id'
-        }
-      },
       profileId: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -30,7 +21,7 @@ module.exports = {
           key: 'id'
         }
       },
-      voterId: {
+      opinionId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onDelete: 'CASCADE',
@@ -40,9 +31,6 @@ module.exports = {
         }
       },
       comment: {
-        type: Sequelize.STRING
-      },
-      imageUrl: {
         type: Sequelize.STRING
       },
       createdAt: {

@@ -4,7 +4,6 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Epic extends Model {
     static associate(models) {
-      Epic.hasMany(models.Opinion, { foreignKey: 'epicId' });
     }
   }
 

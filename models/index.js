@@ -31,7 +31,6 @@ async function testConnection(params) {
   }
 }
 
-testConnection();
 
 fs.readdirSync(__dirname)
   .filter(file => {
@@ -49,6 +48,8 @@ Object.keys(db).forEach(modelName => {
     db[modelName].associate(db);
   }
 });
+
+testConnection();
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
