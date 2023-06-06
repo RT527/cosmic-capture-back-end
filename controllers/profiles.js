@@ -1,13 +1,15 @@
-const { Profile } = require('../models')
+const { Profile,Opinion } = require('../models')
 const cloudinary = require('cloudinary').v2
 
 async function index(req, res) {
   try {
-    const profiles = await Profile.findAll()
-    res.json(profiles)
-  } catch (err) {
-    console.log(err)
-    res.status(500).json(err)
+    const profiles = await Profile.findAll({
+      include: [{ model: Opinion, as: "opinionsReceived" }],
+    })
+    res.status(200).json(profiles)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ err: error })
   }
 }
 
