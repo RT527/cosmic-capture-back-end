@@ -17,7 +17,7 @@ app.use(formData.parse())
 // Import routes
 const profilesRouter = require('./routes/profiles.js')
 const authRouter = require('./routes/auth.js')
-const epicsRouter = require('./routes/epic');
+const epicsRouter = require('./routes/epics.js');
 const opinionsRouter = require('./routes/opinions.js')
 
 // Mount imported routes
