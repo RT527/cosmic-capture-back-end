@@ -35,4 +35,8 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500).json({ err: err.message })
 })
 
+app.listen(3000, '0.0.0.0', () => {
+  console.log('Server is listening on 0.0.0.0:3000')
+})
+
 module.exports = app
