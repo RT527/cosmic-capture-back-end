@@ -69,7 +69,7 @@ async function castOpinion(req, res) {
     }
 
     const profile = await Profile.findByPk(profileId, {
-      include: { model: Opinion, as: 'opinionsReceived' },
+      include: [{ model: Opinion, as: 'opinionsReceived' }],
     })
 
     res.status(200).json(profile)
@@ -82,3 +82,4 @@ async function castOpinion(req, res) {
 module.exports = {
   castOpinion,
 }
+
