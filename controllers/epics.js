@@ -1,2 +1,33 @@
-// const { Epic } = require('../models')
-//saved for future epic model selection controllers
+const express = require('express')
+const axios = require('axios')
+require('dotenv').config()
+
+async function getEpic(req, res) {
+  const { imageId } = req.params
+
+  try {
+    const response = await axios.get(`https://api.nasa.gov/EPIC/archive/natural/2019/05/30/png/epic_1b_${imageId}.png`, {
+      params: {
+        api_key: process.env.NASA_API_KEY,
+      },
+      responseType: 'arraybuffer',
+    })
+
+    const imageData = Buffer.from(response.data, 'binary').toString('base64')
+    const imageUrl = `data:${response.headers['content-type']};base64,${imageData}`
+
+    const caption = "This image was taken by NASA's EPIC camera onboard the NOAA DSCOVR spacecraft"
+    const date = "2023-06-09"
+
+    res.json({ url: imageUrl, caption: caption, date: date })
+  } catch (error) {
+    console.log('Error fetching image data:', error)
+    res.status(500).json({ error: 'Failed to fetch image data' })
+  }
+}
+
+module.exports = {
+  getEpic,
+}
+
+
